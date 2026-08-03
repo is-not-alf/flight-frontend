@@ -20,7 +20,7 @@
             />
             <TtInputText
               label="Аэропорты вылета"
-              :model-value="flight.departureAirport?.name"
+              :model-value="getAirportInfo"
               readonly
             />
             <TtDatePicker
@@ -35,7 +35,7 @@
             />
             <TtInputText
               label="Самолёт"
-              :model-value="flight.aircraft?.model"
+              :model-value="getAircraftInfo"
               readonly
             />
             <TtInputNumber
@@ -107,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import Tabs from 'primevue/tabs';
 import TabList from 'primevue/tablist';
 import Tab from 'primevue/tab';
@@ -191,6 +191,16 @@ const loadFlightPassengers = async () => {
 onMounted(() => {
   loadFlight();
   loadFlightPassengers();
+});
+
+const getAirportInfo = computed(() => {
+  const airport = flight.value.departureAirport;
+  return `${airport?.name}, ${airport?.city}, ${airport?.code}`;
+});
+
+const getAircraftInfo = computed(() => {
+  const aircraft = flight.value.aircraft;
+  return `${aircraft?.model}, вместимость - ${aircraft?.capacity}`;
 });
 
 const closeDialog = () => {

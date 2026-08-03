@@ -12,16 +12,6 @@ export type FlightRequest = {
   aircraftId: number;
 }
 
-// export type FlightResponse = {
-//   id: number;
-//   flightNumber: string;
-//   arrivalTime: Date;
-//   departureTime: Date;
-//   arrivalAirport: AirportData;
-//   departureAirport: AircraftData;
-//   aircraft: AircraftData;
-// }
-
 export type FlightData = {
   id?: number | null;
   flightNumber: string | null;

@@ -106,8 +106,6 @@ const loadFlights = async (page: number = 0, size: number = 10) => {
 };
 
 const onPage = (event: any) => {
-  // console.log(event);
-  // console.log(event.page, event.rows);
   loadFlights(event.page, event.rows);
 };
 
